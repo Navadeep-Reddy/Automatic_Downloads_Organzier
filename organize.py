@@ -56,7 +56,7 @@ def main():
     for name in comp_name:
         shutil.move(name, "/home/navadeep/Downloads/Compressed")
 
-    #store names of code
+    #store names of codes
     c_name = []
     c_types = ["*.py", "*.cpp", "*.html", "*.js", "*.css", "*.c"]
     for temp in c_types:
