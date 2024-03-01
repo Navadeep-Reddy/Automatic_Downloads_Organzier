@@ -69,4 +69,15 @@ def main():
     for name in misc_names:
         shutil.move(name, "/home/navadeep/Downloads/Misc")
 
+    #get the names of all the folders
+    fa_names = glob.glob(os.path.join(downloads_folder, "*"))
+    f_names = []
+    for temp in fa_names:
+        if temp not in ["/home/navadeep/Downloads/Code", "/home/navadeep/Downloads/Misc", "/home/navadeep/Downloads/Compressed", "/home/navadeep/Downloads/Audio", "/home/navadeep/Downloads/Video", "/home/navadeep/Downloads/Docs", "/home/navadeep/Downloads/Photos"]:
+            f_names.append(temp)
+
+    for name in f_names:
+        shutil.move(name, "/home/navadeep/Downloads/Folders")
+
+
 main()
