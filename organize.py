@@ -22,7 +22,7 @@ def main():
 
     #store the names of all videos in a variable
     video_names = []
-    video_types = ["*.mp4", "*.mov", "*.webm", "*.avi"]
+    video_types = ["*.mp4", "*.mov", "*.webm", "*.avi", "*.mkv"]
     for temp in video_types:
         video_names.extend(glob.glob(os.path.join(downloads_folder, temp)))
 
@@ -32,7 +32,7 @@ def main():
 
     #store all the names of documents
     doc_names = []
-    doc_types = ["*.pptx", "*.docx", "*.pdf", "*.doc"] 
+    doc_types = ["*.pptx", "*.docx", "*.pdf", "*.doc", "*.xlsx"] 
     for temp in doc_types:
         doc_names.extend(glob.glob(os.path.join(downloads_folder, temp)))
 
