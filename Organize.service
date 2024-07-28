@@ -1,0 +1,13 @@
+[Unit]
+Description=Downloads Organizer Service
+After=network.target
+
+[Service]
+User=navadeep
+ExecStart=/usr/bin/python3 /home/navadeep/Scripts/organize.py
+WorkingDirectory=/home/navadeep
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
