@@ -6,6 +6,16 @@ def create_directory(path):
     if not os.path.exists(path):
         os.makedirs(path)
 
+def move_file(src, dest_folder):
+    dest = os.path.join(dest_folder, os.path.basename(src))
+    if os.path.exists(dest):
+        base, ext = os.path.splitext(dest)
+        counter = 1
+        while os.path.exists(dest):
+            dest = f"{base}_{counter}{ext}"
+            counter += 1
+    shutil.move(src, dest)
+
 def main():
     # store the path of downloads folder
     downloads_folder = "/home/navadeep/Downloads/"
@@ -23,7 +33,7 @@ def main():
 
     # move images to Photos folder
     for name in images_names:
-        shutil.move(name, os.path.join(downloads_folder, "Photos"))
+        move_file(name, os.path.join(downloads_folder, "Photos"))
 
     # store the names of all videos in a variable
     video_names = []
@@ -32,7 +42,7 @@ def main():
         video_names.extend(glob.glob(os.path.join(downloads_folder, temp)))
 
     for name in video_names:
-        shutil.move(name, os.path.join(downloads_folder, "Video"))
+        move_file(name, os.path.join(downloads_folder, "Video"))
 
     # store all the names of documents
     doc_names = []
@@ -41,7 +51,7 @@ def main():
         doc_names.extend(glob.glob(os.path.join(downloads_folder, temp)))
 
     for name in doc_names:
-        shutil.move(name, os.path.join(downloads_folder, "Docs"))
+        move_file(name, os.path.join(downloads_folder, "Docs"))
 
     # store all the names of audio files
     au_names = []
@@ -50,7 +60,7 @@ def main():
         au_names.extend(glob.glob(os.path.join(downloads_folder, temp)))
 
     for name in au_names:
-        shutil.move(name, os.path.join(downloads_folder, "Audio"))
+        move_file(name, os.path.join(downloads_folder, "Audio"))
 
     # store compressed file names
     comp_names = []
@@ -58,7 +68,7 @@ def main():
     for temp in comp_types:
         comp_names.extend(glob.glob(os.path.join(downloads_folder, temp)))
     for name in comp_names:
-        shutil.move(name, os.path.join(downloads_folder, "Compressed"))
+        move_file(name, os.path.join(downloads_folder, "Compressed"))
 
     # store names of code files
     c_names = []
@@ -66,12 +76,12 @@ def main():
     for temp in c_types:
         c_names.extend(glob.glob(os.path.join(downloads_folder, temp)))
     for name in c_names:
-        shutil.move(name, os.path.join(downloads_folder, "Code"))
+        move_file(name, os.path.join(downloads_folder, "Code"))
 
     # move the remaining files to Misc
     misc_names = glob.glob(os.path.join(downloads_folder, "*.*"))
     for name in misc_names:
-        shutil.move(name, os.path.join(downloads_folder, "Misc"))
+        move_file(name, os.path.join(downloads_folder, "Misc"))
 
     # get the names of all the folders
     fa_names = glob.glob(os.path.join(downloads_folder, "*"))
@@ -81,7 +91,6 @@ def main():
             f_names.append(temp)
 
     for name in f_names:
-        shutil.move(name, os.path.join(downloads_folder, "Folders"))
+        move_file(name, os.path.join(downloads_folder, "Folders"))
 
 main()
-
